@@ -26,13 +26,11 @@ public class TopKFrequentElements {
         );
 
         for (int x : freq.keySet()) {
-            pq.add(x);
+            pq.offer(x);
             if (pq.size() > k) pq.poll();
         }
 
-        for (int i = 0; i < k; i++) {
-            res[i] = pq.poll();
-        }
+        for (int i = 0; i < k; i++) res[i] = pq.poll();
 
         return res;
     }

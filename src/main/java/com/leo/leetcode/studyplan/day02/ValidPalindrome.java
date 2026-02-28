@@ -8,8 +8,22 @@ public class ValidPalindrome {
      * Suggested signature:
      * boolean isPalindrome(String s)
      */
-    public Object solve(Object... args) {
+    public boolean isPalindrome(String s) {
         // TODO: implement your solution and replace the method signature with exact types.
-        throw new UnsupportedOperationException("TODO");
+        if (s.length() <= 1) return true;
+        int left = 0, right = s.length() - 1;
+
+        while (left < right) {
+            while (!Character.isLetterOrDigit(s.charAt(left)) && left < right) left++;
+            while (!Character.isLetterOrDigit(s.charAt(right)) && right > left) right--;
+            if (Character.toLowerCase(s.charAt(left)) == Character.toLowerCase(s.charAt(right))) {
+                left++;
+                right--;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
