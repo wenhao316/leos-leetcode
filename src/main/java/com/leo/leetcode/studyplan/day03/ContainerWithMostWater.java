@@ -8,8 +8,20 @@ public class ContainerWithMostWater {
      * Suggested signature:
      * int maxArea(int[] height)
      */
-    public Object solve(Object... args) {
-        // TODO: implement your solution and replace the method signature with exact types.
-        throw new UnsupportedOperationException("TODO");
+    public int maxArea(int[] height) {
+        int res = 0;
+        int left = 0, right = height.length - 1;
+
+        while (left < right) {
+            int curr = (right - left) * Math.min(height[left], height[right]);
+            res = Math.max(res, curr);
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        return res;
     }
 }

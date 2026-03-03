@@ -8,8 +8,15 @@ public class BestTimeToBuySellStock {
      * Suggested signature:
      * int maxProfit(int[] prices)
      */
-    public Object solve(Object... args) {
-        // TODO: implement your solution and replace the method signature with exact types.
-        throw new UnsupportedOperationException("TODO");
+    public int maxProfit(int[] prices) {
+        int res = 0;
+        int curr = prices[0];
+
+        for (int x : prices) {
+            res = Math.max(res, x - curr);
+            curr = Math.min(curr, x);
+        }
+
+        return res;
     }
 }
