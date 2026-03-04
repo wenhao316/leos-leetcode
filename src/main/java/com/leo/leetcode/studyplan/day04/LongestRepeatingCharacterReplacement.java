@@ -8,8 +8,22 @@ public class LongestRepeatingCharacterReplacement {
      * Suggested signature:
      * int characterReplacement(String s, int k)
      */
-    public Object solve(Object... args) {
-        // TODO: implement your solution and replace the method signature with exact types.
-        throw new UnsupportedOperationException("TODO");
+    public int characterReplacement(String s, int k) {
+        int[] occur = new int[26];
+        int left = 0, right = 0;
+        int res = 0, currmax = 0;
+
+        for (char ch : s.toCharArray()) {
+            occur[ch - 'A']++;
+            currmax = Math.max(currmax, occur[ch-'A']);
+            if (right - left + 1 - currmax > k) {
+                occur[s.charAt(left) - 'A']--;
+                left++;
+            }
+            res = Math.max(res, right - left + 1);
+            right++;
+        }
+
+        return res;
     }
 }

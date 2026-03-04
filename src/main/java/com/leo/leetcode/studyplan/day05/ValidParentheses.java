@@ -1,5 +1,7 @@
 package com.leo.leetcode.studyplan.day05;
 
+import java.util.Stack;
+
 public class ValidParentheses {
     /*
      * Prompt:
@@ -8,8 +10,24 @@ public class ValidParentheses {
      * Suggested signature:
      * boolean isValid(String s)
      */
-    public Object solve(Object... args) {
-        // TODO: implement your solution and replace the method signature with exact types.
-        throw new UnsupportedOperationException("TODO");
+    public boolean isValid(String s) {
+        Stack<Character> seen = new Stack<>();
+
+        for (char ch : s.toCharArray()) {
+            if (ch == '}') {
+                if (!seen.isEmpty() && seen.peek() == '{') seen.pop();
+                else return false;
+            } else if (ch == ')') {
+                if (!seen.isEmpty() && seen.peek() == '(') seen.pop();
+                else return false;
+            } else if (ch == ']') {
+                if (!seen.isEmpty() && seen.peek() == '[') seen.pop();
+                else return false;
+            } else {
+                seen.add(ch);
+            }
+        }
+
+        return seen.isEmpty();
     }
 }

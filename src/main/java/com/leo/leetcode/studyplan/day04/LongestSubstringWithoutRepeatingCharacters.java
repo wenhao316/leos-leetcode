@@ -1,5 +1,8 @@
 package com.leo.leetcode.studyplan.day04;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LongestSubstringWithoutRepeatingCharacters {
     /*
      * Prompt:
@@ -8,8 +11,25 @@ public class LongestSubstringWithoutRepeatingCharacters {
      * Suggested signature:
      * int lengthOfLongestSubstring(String s)
      */
-    public Object solve(Object... args) {
-        // TODO: implement your solution and replace the method signature with exact types.
-        throw new UnsupportedOperationException("TODO");
+    public int lengthOfLongestSubstring(String s) {
+        if (s.length() < 2) return s.length();
+
+        int res = 0;
+        int left = 0, right = 1;
+        Set<Character> seen = new HashSet<>();
+        seen.add(s.charAt(left));
+
+        while (right < s.length()) {
+            if (seen.contains(s.charAt(right))) {
+                seen.remove(s.charAt(left));
+                left++;
+            } else {
+                seen.add(s.charAt(right));
+                right++;
+            }
+            res = Math.max(res, right - left);
+        }
+
+        return res;
     }
 }

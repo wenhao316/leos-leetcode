@@ -2,10 +2,8 @@ package com.leo.leetcode.studyplan.day02;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class ThreeSum {
@@ -28,7 +26,6 @@ public class ThreeSum {
     }
 
     private void twoSum(int[] nums, int i, List<List<Integer>> res) {
-        Map<Integer, Integer> map = new HashMap<>();
         Set<Integer> seen = new HashSet<>();
 
         for (int j = i + 1; j < nums.length; j++) {
